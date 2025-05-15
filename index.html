@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Donate To Who</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 
   <header>
     <h1>DONATE TO WHO</h1>
@@ -49,26 +51,50 @@
   </div>
   
 </section>
+<section id="donation-matcher">
+  <h2 class="donation-title">What Would You Like to Donate?</h2>
+
+  <form id="donation-form" class="tile-container">
+    <label class="tile">
+      <input type="checkbox" name="item" value="clothes" class="tile-checkbox">
+      <img src="images/shirts.jpg" alt="Clothes">
+      <span>Clothes</span>
+    </label>
+
+    <label class="tile">
+      <input type="checkbox" name="item" value="books" class="tile-checkbox">
+      <img src="images/books.jpg" alt="Books">
+      <span>Books</span>
+    </label>
+
+    <label class="tile">
+      <input type="checkbox" name="item" value="toys" class="tile-checkbox">
+      <img src="images/toys.jpg" alt="Toys">
+      <span>Toys</span>
+    </label>
+
+    <label class="tile">
+      <input type="checkbox" name="item" value="furniture" class="tile-checkbox">
+      <img src="images/furniture.jpg" alt="Furniture">
+      <span>Furniture</span>
+    </label>
+
+    <label class="tile">
+      <input type="checkbox" name="item" value="appliances" class="tile-checkbox">
+      <img src="images/fans.jpg" alt="Appliances">
+      <span>Appliances</span>
+    </label>
+
+  </form>
+ 
+  <h2 class="donation-heading">Donating Centers Who Need Your Items</h2>
+  
+   <div id="match-result" style="margin-top: 20px;"></div>
+</section>
 
 
-    <section id="how-to-donate">
-      <h2>How to Donate</h2>
-      <ol>
-        <li>Check what each centre accepts.</li>
-        <li>Contact your preferred centre or schedule a pickup.</li>
-        <li>Drop off or prepare your items for collection.</li>
-      </ol>
-    </section>
-
-    <section id="impact">
-      <h2>Measure of Success</h2>
-      <p>We aim to increase donations and reduce landfill waste. Your feedback helps us improve — please share your experience!</p>
-    </section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Spring Clean & Donate. All rights reserved.</p>
-  </footer>
-
+<script src="script.js"></script>
 </body>
 </html>

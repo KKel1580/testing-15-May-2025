@@ -3,9 +3,6 @@ h1 {
   text-align: center;
   color: #1e71a1;  /* Change to fit your background */
   font-weight: bold;
-}
-
-h1 {
   margin-top: 100px; /* Adjust the number to control how far down it moves */
 }
 
@@ -73,7 +70,7 @@ body {
 }
 
 .speechbox {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(208, 245, 252, 0.9);
   border-radius: 15px;
   padding: 20px;
   width: 300px;               /* Fixed width for equal sizing */
@@ -100,4 +97,117 @@ body {
   font-style: italic;
   color: #666;
 }
+
+.tile-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tile {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.tile:hover {
+  transform: scale(1.03);
+}
+
+.tile input[type="checkbox"] {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  transform: scale(1.3);
+  cursor: pointer;
+}
+
+.tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+}
+
+.tile span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-size: 14px;
+  padding: 6px;
+  text-align: center;
+  border-radius: 0 0 10px 10px;
+}
+/* Styling for the donation center result boxes */
+#match-result {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.centre-box {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  text-align: center;
+}
+
+.centre-box img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.centre-info {
+  padding-top: 10px;
+}
+
+.centre-info h3 {
+  margin: 0;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.centre-info p {
+  margin: 5px 0;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.centre-info strong {
+  color: #000;
+}
+
+.donation-heading {
+  margin-top: 50px; /* Adjust value as needed */
+}
+.donation-title {
+  margin-top: 30px;
+  font-family: 'Aptos Narrow', sans-serif;
+  font-size: 30px;
+  text-align: center;
+}
+h1,
+.donation-title {
+  font-family: 'Aptos Narrow', sans-serif;
+  text-align: center;
+}
+
+
 
