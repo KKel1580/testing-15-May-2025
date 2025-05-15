@@ -1,0 +1,103 @@
+h1 {
+  font-size: 52px;
+  text-align: center;
+  color: #1e71a1;  /* Change to fit your background */
+  font-weight: bold;
+}
+
+h1 {
+  margin-top: 100px; /* Adjust the number to control how far down it moves */
+}
+
+body {
+  font-family: 'Aptos Narrow', sans-serif;
+}
+
+
+.top-nav {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.top-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+}
+
+.top-nav li a {
+  text-decoration: none;
+  color: #1e71a1;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.top-nav li a:hover {
+  background-color: #101010;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("images/Donating hands.jpg"); /* Replace with your image path or URL */
+  background-size: cover;       /* Make image cover the full screen */
+  background-repeat: no-repeat; /* Prevent tiling */
+  background-position: center;  /* Center the image */
+  background-attachment: fixed; /* Optional: makes the image stay fixed on scroll */
+  color: #ffffff;               /* Optional: change text color for contrast */
+}
+#testimonials {
+  max: width 1000px;px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+#testimonials h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: white;
+}
+
+#testimonials {
+  display: flex;
+  flex-wrap: wrap;            /* Wrap on smaller screens */
+  justify-content: center;    /* Center items horizontally */
+  gap: 20px;                  /* Space between boxes */
+}
+
+.speechbox {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 20px;
+  width: 300px;               /* Fixed width for equal sizing */
+  font-size: 18px;
+  position: relative;
+  color: #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+
+.speechbox::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 40px;
+  border-width: 20px 20px 0;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.9) transparent transparent transparent;
+}
+
+.author {
+  display: block;
+  margin-top: 10px;
+  font-style: italic;
+  color: #666;
+}
+
