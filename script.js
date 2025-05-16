@@ -1,75 +1,82 @@
-function matchCentres() {
-  const selectedItems = Array.from(document.querySelectorAll('input[name="item"]:checked')).map(cb => cb.value);
-  const resultContainer = document.getElementById("match-result");
-  const selectedItemsContainer = document.getElementById("selected-items-container");
-
-  resultContainer.innerHTML = ""; // Clear any existing content
-
-  // Update the selected items display
-  if (selectedItems.length === 0) {
-    selectedItemsContainer.innerHTML = "<p>No items selected</p>";
-  } else {
-    selectedItemsContainer.innerHTML = "<p>Selected items: </p>" + selectedItems.map(item => 
-      `<span class="selected-item">${item}</span>`).join('');
+// Array of donation centers with the items they accept, their location, and operating hours
+const donationCenters = [
+  { 
+    name: "Charity A", 
+    items: ["clothes", "books", "toys"], 
+    location: "123 Charity St., Cityville", 
+    hours: "Mon-Fri: 9 AM - 5 PM" 
+  },
+  { 
+    name: "Charity B", 
+    items: ["clothes", "furniture", "appliances"], 
+    location: "456 Helping Ave., Townsville", 
+    hours: "Mon-Sat: 10 AM - 6 PM"
+  },
+  { 
+    name: "Charity C", 
+    items: ["toys", "furniture", "appliances"], 
+    location: "789 Generosity Rd., Villagetown", 
+    hours: "Mon-Sun: 9 AM - 7 PM"
+  },
+  { 
+    name: "Charity D", 
+    items: ["books", "appliances"], 
+    location: "101 Donation Blvd., Cityplace", 
+    hours: "Tue-Sun: 10 AM - 4 PM"
+  },
+  { 
+    name: "Charity E", 
+    items: ["clothes", "toys", "furniture"], 
+    location: "202 Kindness Dr., Metroville", 
+    hours: "Mon-Sun: 8 AM - 8 PM"
   }
+];
 
-  // If no items are selected, return early
-  if (selectedItems.length === 0) {
-    resultContainer.innerHTML = "<p>Please select at least one item.</p>";
-    return;
-  }
+// Function to update the matching donation centers
+function updateMatchingCenters() {
+  const selectedItems = [];
 
-  // Score each centre: full match gets top priority
-  const matches = donationCentres
-    .map(centre => {
-      const matchingItems = selectedItems.filter(item => centre.items.includes(item));
-      return {
-        ...centre,
-        matchCount: matchingItems.length,
-        isFullMatch: matchingItems.length === selectedItems.length
-      };
-    })
-    .filter(centre => centre.matchCount > 0) // Remove centres with no matches
-    .sort((a, b) => {
-      // Full matches first, then more matches higher
-      if (a.isFullMatch && !b.isFullMatch) return -1;
-      if (!a.isFullMatch && b.isFullMatch) return 1;
-      return b.matchCount - a.matchCount; // Sort by match count if not full match
-    });
-
-  // If no matches found
-  if (matches.length === 0) {
-    resultContainer.innerHTML = "<p>No matching centres found. Try selecting different items.</p>";
-    return;
-  }
-
-  // Display sorted results
-  matches.forEach(centre => {
-    const box = document.createElement("div");
-    box.classList.add("centre-box");
-    
-    // Add additional styling or a label for full matches
-    const fullMatchLabel = centre.isFullMatch ? `<span class="full-match-label">Full Match</span>` : '';
-
-    box.innerHTML = `
-      <img src="${centre.image}" alt="${centre.name}" class="centre-image">
-      <div class="centre-info">
-        <h3>${centre.name}</h3>
-        <p><strong>Location:</strong> ${centre.location}</p>
-        <p><strong>Accepted Items:</strong> ${centre.items.join(", ")}</p>
-        <p><strong>Operating Hours:</strong> ${centre.hours}</p>
-        ${fullMatchLabel}  <!-- Add the "Full Match" label if applicable -->
-      </div>
-    `;
-    resultContainer.appendChild(box);
+  // Get all selected items from checkboxes
+  document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+    selectedItems.push(checkbox.value);
   });
+
+  // Filter and sort donation centers based on selected items
+  const sortedCenters = donationCenters
+    .map(center => {
+      // Calculate how many selected items this center accepts
+      const matchedItems = center.items.filter(item => selectedItems.includes(item));
+      return { ...center, matchCount: matchedItems.length };
+    })
+    .filter(center => center.matchCount > 0)  // Only show centers that accept at least one selected item
+    .sort((a, b) => b.matchCount - a.matchCount);  // Sort by matchCount in descending order
+
+  // Display the results
+  const resultContainer = document.getElementById("match-result");
+  resultContainer.innerHTML = ""; // Clear previous results
+
+  if (sortedCenters.length > 0) {
+    sortedCenters.forEach(center => {
+      const div = document.createElement("div");
+      div.classList.add("donation-center");
+
+      div.innerHTML = `
+        <div class="center-box">
+          <h3>${center.name}</h3>
+          <p><strong>Location:</strong> ${center.location}</p>
+          <p><strong>Items Accepted:</strong> ${center.items.join(", ")}</p>
+          <p><strong>Operating Hours:</strong> ${center.hours}</p>
+        </div>
+      `;
+      resultContainer.appendChild(div);
+    });
+  } else {
+    resultContainer.innerHTML = "<p>No donation centers match your selected items.</p>";
+  }
 }
 
-// Automatically run matchCentres() when any checkbox is clicked
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll('input[name="item"]').forEach(checkbox => {
-    checkbox.addEventListener('change', matchCentres);
-  });
-
-  matchCentres(); // run once on load
+// Add event listeners to checkboxes
+document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+  checkbox.addEventListener("change", updateMatchingCenters);
 });
+

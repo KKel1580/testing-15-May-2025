@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Donate To Who</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
 
-
-  <header>
-    <h1>DONATE TO WHO</h1>
-      </header>
+<header>
+  <h1>DONATE TO WHO</h1>
+</header>
 
 <nav class="top-nav">
   <ul>
@@ -21,80 +23,85 @@
   </ul>
 </nav>
 
-  <main>
-<section id="testimonials">
-  <h2>Our Users</h2>
+<main>
 
-  <div class="speechbox">
-    <p>"I used to throw away so many usable items. Thanks to this site, I now know exactly where and what to donate!"</p>
-    <span class="author">— Mei Ling, Homeowner</span>
-  </div>
-
-  <div class="speechbox">
-    <p>"This platform made spring cleaning so meaningful. I scheduled a pickup in minutes!"</p>
-    <span class="author">— Jason, Father of Two</span>
-  </div>
-
-  <div class="speechbox">
-    <p>"Navigating this website was so easy, even for someone like me who isn't tech-savvy!"</p>
-    <span class="author">— Auntie Tan, Retiree</span>
-  </div>
+  <!-- Testimonials Section -->
+  <section id="testimonials">
+    <h2>Our Users</h2>
 
     <div class="speechbox">
-    <p>"Navigating this website was so easy, even for someone like me who isn't tech-savvy!"</p>
-    <span class="author">— Auntie Tan, Retiree</span>
-  </div>
+      <p>"I used to throw away so many usable items. Thanks to this site, I now know exactly where and what to donate!"</p>
+      <span class="author">— Mei Ling, Homeowner</span>
+    </div>
 
     <div class="speechbox">
-    <p>"Navigating this website was so easy, even for someone like me who isn't tech-savvy!"</p>
-    <span class="author">— Auntie Tan, Retiree</span>
-  </div>
-  
-</section>
-<section id="donation-matcher">
-  <h2 class="donation-title">What Would You Like to Donate?</h2>
+      <p>"This platform made spring cleaning so meaningful. I scheduled a pickup in minutes!"</p>
+      <span class="author">— Jason, Father of Two</span>
+    </div>
 
-  <form id="donation-form" class="tile-container">
-    <label class="tile">
-      <input type="checkbox" name="item" value="clothes" class="tile-checkbox">
-      <img src="images/shirts.jpg" alt="Clothes">
-      <span>Clothes</span>
-    </label>
+        <div class="speechbox">
+      <p>"This platform made spring cleaning so meaningful. I scheduled a pickup in minutes!"</p>
+      <span class="author">— Jason, Father of Two</span>
+    </div>
 
-    <label class="tile">
-      <input type="checkbox" name="item" value="books" class="tile-checkbox">
-      <img src="images/books.jpg" alt="Books">
-      <span>Books</span>
-    </label>
+        <div class="speechbox">
+      <p>"This platform made spring cleaning so meaningful. I scheduled a pickup in minutes!"</p>
+      <span class="author">— Jason, Father of Two</span>
+    </div>
+    
+    <div class="speechbox">
+      <p>"Navigating this website was so easy, even for someone like me who isn't tech-savvy!"</p>
+      <span class="author">— Auntie Tan, Retiree</span>
+    </div>
 
-    <label class="tile">
-      <input type="checkbox" name="item" value="toys" class="tile-checkbox">
-      <img src="images/toys.jpg" alt="Toys">
-      <span>Toys</span>
-    </label>
+  </section>
 
-    <label class="tile">
-      <input type="checkbox" name="item" value="furniture" class="tile-checkbox">
-      <img src="images/furniture.jpg" alt="Furniture">
-      <span>Furniture</span>
-    </label>
+  <!-- Donation Matcher Section -->
+  <section id="donation-matcher">
+    <h2 class="donation-title">What Would You Like to Donate?</h2>
 
-    <label class="tile">
-      <input type="checkbox" name="item" value="appliances" class="tile-checkbox">
-      <img src="images/fans.jpg" alt="Appliances">
-      <span>Appliances</span>
-    </label>
+    <form id="donation-form" class="tile-container">
+      <label class="tile">
+        <input type="checkbox" name="item" value="clothes" class="tile-checkbox">
+        <img src="images/shirts.jpg" alt="Clothes">
+        <span>Clothes</span>
+      </label>
 
-  </form>
- 
-  <h2 class="donation-heading">Donating Centers Who Need Your Items</h2>
-  
-   <div id="match-result" style="margin-top: 20px;"></div>
-</section>
+      <label class="tile">
+        <input type="checkbox" name="item" value="books" class="tile-checkbox">
+        <img src="images/books.jpg" alt="Books">
+        <span>Books</span>
+      </label>
 
+      <label class="tile">
+        <input type="checkbox" name="item" value="toys" class="tile-checkbox">
+        <img src="images/toys.jpg" alt="Toys">
+        <span>Toys</span>
+      </label>
 
-  </main>
+      <label class="tile">
+        <input type="checkbox" name="item" value="furniture" class="tile-checkbox">
+        <img src="images/furniture.jpg" alt="Furniture">
+        <span>Furniture</span>
+      </label>
+
+      <label class="tile">
+        <input type="checkbox" name="item" value="appliances" class="tile-checkbox">
+        <img src="images/fans.jpg" alt="Appliances">
+        <span>Appliances</span>
+      </label>
+    </form>
+
+    <h2 class="donation-heading">Donating Centers Who Need Your Items</h2>
+
+    <div id="match-result" style="margin-top: 20px;"></div>
+  </section>
+
+</main>
 
 <script src="script.js"></script>
+
 </body>
 </html>
+
+
