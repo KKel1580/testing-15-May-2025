@@ -1,47 +1,56 @@
-// Sample data for donation centers
-// Sample donation center data
-const donationCentres = [
-  {
-    name: "Goodwill Centre",
-    location: "123 Charity St, City",
-    items: ["clothes", "books", "toys"],
-    hours: "Mon-Fri: 9 AM - 5 PM",
-    image: "images/goodwill.jpg"
-  },
-  {
-    name: "Hope for All",
-    location: "456 Hope Ave, City",
-    items: ["furniture", "appliances"],
-    hours: "Mon-Sat: 10 AM - 6 PM",
-    image: "images/hope.jpg"
-  },
-  {
-    name: "Community Chest",
-    location: "789 Giving Rd, City",
-    items: ["clothes", "appliances"],
-    hours: "Mon-Sun: 8 AM - 8 PM",
-    image: "images/community-chest.jpg"
-  }
-];
-
-// Matching function
 function matchCentres() {
   const selectedItems = Array.from(document.querySelectorAll('input[name="item"]:checked')).map(cb => cb.value);
   const resultContainer = document.getElementById("match-result");
-  resultContainer.innerHTML = "";
+  const selectedItemsContainer = document.getElementById("selected-items-container");
 
-  const matches = donationCentres.filter(centre => {
-    return centre.items.some(item => selectedItems.includes(item));
-  });
+  resultContainer.innerHTML = ""; // Clear any existing content
 
+  // Update the selected items display
+  if (selectedItems.length === 0) {
+    selectedItemsContainer.innerHTML = "<p>No items selected</p>";
+  } else {
+    selectedItemsContainer.innerHTML = "<p>Selected items: </p>" + selectedItems.map(item => 
+      `<span class="selected-item">${item}</span>`).join('');
+  }
+
+  // If no items are selected, return early
+  if (selectedItems.length === 0) {
+    resultContainer.innerHTML = "<p>Please select at least one item.</p>";
+    return;
+  }
+
+  // Score each centre: full match gets top priority
+  const matches = donationCentres
+    .map(centre => {
+      const matchingItems = selectedItems.filter(item => centre.items.includes(item));
+      return {
+        ...centre,
+        matchCount: matchingItems.length,
+        isFullMatch: matchingItems.length === selectedItems.length
+      };
+    })
+    .filter(centre => centre.matchCount > 0) // Remove centres with no matches
+    .sort((a, b) => {
+      // Full matches first, then more matches higher
+      if (a.isFullMatch && !b.isFullMatch) return -1;
+      if (!a.isFullMatch && b.isFullMatch) return 1;
+      return b.matchCount - a.matchCount; // Sort by match count if not full match
+    });
+
+  // If no matches found
   if (matches.length === 0) {
     resultContainer.innerHTML = "<p>No matching centres found. Try selecting different items.</p>";
     return;
   }
 
+  // Display sorted results
   matches.forEach(centre => {
     const box = document.createElement("div");
     box.classList.add("centre-box");
+    
+    // Add additional styling or a label for full matches
+    const fullMatchLabel = centre.isFullMatch ? `<span class="full-match-label">Full Match</span>` : '';
+
     box.innerHTML = `
       <img src="${centre.image}" alt="${centre.name}" class="centre-image">
       <div class="centre-info">
@@ -49,6 +58,7 @@ function matchCentres() {
         <p><strong>Location:</strong> ${centre.location}</p>
         <p><strong>Accepted Items:</strong> ${centre.items.join(", ")}</p>
         <p><strong>Operating Hours:</strong> ${centre.hours}</p>
+        ${fullMatchLabel}  <!-- Add the "Full Match" label if applicable -->
       </div>
     `;
     resultContainer.appendChild(box);
