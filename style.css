@@ -76,7 +76,7 @@ body {
   color: white;
   padding: 20px;
   border-radius: 15px;
-  width: 200px;
+  width: 300px;
   font-size: 14px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   text-align: left;
@@ -163,10 +163,27 @@ body {
 }
 
 .donation-center .center-box {
+  position:relative;
   padding: 5px;
   background-color: #fff;
   border-radius: 8px;
 }
+
+.donation-logo {
+  position: absolute;  /* Enable absolute positioning */
+  top: 10px;           /* Position it 10px from the top */
+  right: 10px;         /* Position it 10px from the right */
+  width: 100px;        /* Set logo width */
+  height: auto;        /* Maintain aspect ratio */
+  display: block;      /* Makes it behave like a block element */
+}
+
+.donation-center img {
+  width: 10%; /* Make the logo 50% of the parent element's width */
+  max-width: 150px; /* Limit the maximum size */
+  height: auto; /* Maintain the aspect ratio */
+}
+
 
 .donation-center h3 {
   font-size: 1.5em;
@@ -184,12 +201,6 @@ body {
 
 .donation-center p {
   margin: 5px 0;
-}
-
-/* Add a hover effect to donation boxes */
-.donation-center:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #0eebeb;
 }
 
 #match-result {

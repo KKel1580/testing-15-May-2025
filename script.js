@@ -1,34 +1,39 @@
 // Array of donation centers with the items they accept, their location, and operating hours
 const donationCenters = [
   { 
-    name: "Charity A", 
-    items: ["clothes", "books", "toys"], 
+    name: "Salvation Army", 
+    items: ["clothes", "books", "toys", "furniture", "applicances"], 
     location: "123 Charity St., Cityville", 
-    hours: "Mon-Fri: 9 AM - 5 PM" 
+    hours: "Mon-Fri: 9 AM - 5 PM",
+    logo: "images/salvation army.png" 
   },
   { 
     name: "Charity B", 
     items: ["clothes", "furniture", "appliances"], 
     location: "456 Helping Ave., Townsville", 
-    hours: "Mon-Sat: 10 AM - 6 PM"
+    hours: "Mon-Sat: 10 AM - 6 PM",
+    logo: "images/salvation army.png" 
   },
   { 
     name: "Charity C", 
     items: ["toys", "furniture", "appliances"], 
     location: "789 Generosity Rd., Villagetown", 
-    hours: "Mon-Sun: 9 AM - 7 PM"
+    hours: "Mon-Sun: 9 AM - 7 PM",
+    logo: "images/salvation army.png" 
   },
   { 
     name: "Charity D", 
     items: ["books", "appliances"], 
     location: "101 Donation Blvd., Cityplace", 
-    hours: "Tue-Sun: 10 AM - 4 PM"
+    hours: "Tue-Sun: 10 AM - 4 PM",
+    logo: "images/salvation army.png" 
   },
   { 
     name: "Charity E", 
     items: ["clothes", "toys", "furniture"], 
     location: "202 Kindness Dr., Metroville", 
-    hours: "Mon-Sun: 8 AM - 8 PM"
+    hours: "Mon-Sun: 8 AM - 8 PM",
+    logo: "images/salvation army.png" 
   }
 ];
 
@@ -62,6 +67,8 @@ function updateMatchingCenters() {
 
       div.innerHTML = `
         <div class="center-box">
+        <!-- Display Logo for each matching center -->
+        <img src="${center.logo}" alt="${center.name} Logo" class="donation-logo">
           <h3>${center.name}</h3>
           <p><strong>Location:</strong> ${center.location}</p>
           <p><strong>Items Accepted:</strong> ${center.items.join(", ")}</p>
